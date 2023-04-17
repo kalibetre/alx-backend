@@ -50,13 +50,17 @@ class Server:
         return dataset[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, List]:
+        """
+        constructs a dictionary metadata for the requested page and returns it
+        behaves in a similar way as get_page
+        """
         page_content = self.get_page(page, page_size)
         total_pages = math.ceil(len(self.dataset()) / page_size)
         return {
             'page_size': len(page_content),
             'page': page,
             'data': page_content,
-            'next_page': page + 1 if page < total_pages - 1 else None,
+            'next_page': page + 1 if page <= total_pages - 1 else None,
             'prev_page': page - 1 if page > 1 else None,
             'total_pages': total_pages,
         }
