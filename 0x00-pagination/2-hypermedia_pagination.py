@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-0-simple_helper_function module
+2-hypermedia_pagination module
 """
 import csv
 import math
