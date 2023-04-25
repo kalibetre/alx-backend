@@ -27,7 +27,6 @@ def welcome() -> str:
 def get_locale():
     """Get locale from request"""
     lang = request.args.get('locale')
-    print(lang)
     if lang in Config.LANGUAGES:
         return lang
     return request.accept_languages.best_match(app.config['LANGUAGES'])
