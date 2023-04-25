@@ -20,7 +20,7 @@ app.config['BABEL_DEFAULT_TIMEZONE'] = Config.DEFAULT_TZ
 @app.route('/')
 def welcome() -> str:
     """Renders a message"""
-    return render_template('0-index.html')
+    return render_template('1-index.html')
 
 
 if __name__ == '__main__':
