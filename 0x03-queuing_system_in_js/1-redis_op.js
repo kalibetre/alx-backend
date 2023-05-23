@@ -1,15 +1,5 @@
 import { createClient, print } from 'redis';
 
-const redisClient = createClient();
-
-redisClient.on('error', (err) => {
-    console.log(`Redis client not connected to the server: ${err}`);
-});
-
-redisClient.on('connect', () => {
-    console.log('Redis client connected to the server');
-});
-
 /**
  * Sets a new school value in Redis and displays a confirmation using
  * redis.print
@@ -36,6 +26,26 @@ function displaySchoolValue(schoolName) {
     });
 }
 
-displaySchoolValue('Holberton');
-setNewSchool('HolbertonSanFrancisco', '100');
-displaySchoolValue('HolbertonSanFrancisco');
+/**
+ * Executes the main function, which displays the value of 'Holberton' school,
+ * sets a new school called 'HolbertonSanFrancisco' with a value of 100, and
+ * displays the value of 'HolbertonSanFrancisco' school.
+ *
+ * @return {undefined} This function does not return anything
+ */
+function main() {
+    displaySchoolValue('Holberton');
+    setNewSchool('HolbertonSanFrancisco', '100');
+    displaySchoolValue('HolbertonSanFrancisco');
+}
+
+const redisClient = createClient();
+
+redisClient.on('error', (err) => {
+    console.log(`Redis client not connected to the server: ${err}`);
+});
+
+redisClient.on('connect', () => {
+    console.log('Redis client connected to the server');
+    main();
+});
