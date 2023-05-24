@@ -6,12 +6,12 @@ queue.on('job enqueue', (id, job) => {
     console.log(`Notification job created: ${id}`);
 });
 
-queue.on('job complete', (job) => {
-    console.log(`Notification job completed: ${job.id}`);
+queue.on('job complete', (id, job) => {
+    console.log(`Notification job completed: ${id}`);
 });
 
-queue.on('job failed', (job) => {
-    console.log(`Notification job failed: ${job.id}`);
+queue.on('job failed', (id, job) => {
+    console.log(`Notification job failed: ${id}`);
 });
 
 const jobData = {
